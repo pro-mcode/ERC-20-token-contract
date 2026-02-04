@@ -8,6 +8,15 @@ This repo contains a simple ERC-20 token (`ADMN`) built with Foundry, plus scrip
 
 ## Quick Start
 
+## Usage
+
+### Clone
+
+```shell
+git clone https://github.com/pro-mcode/ERC-20-token-contract.git
+cd ERC-20-token-contract
+```
+
 ### Build
 
 ```shell
