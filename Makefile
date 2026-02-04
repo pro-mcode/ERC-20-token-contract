@@ -36,7 +36,7 @@ deploy-sepolia:
 		--broadcast
 
 # Mint tokens on Sepolia.
-mint:
+mint-sepolia:
 	@if [ -z "$(TOKEN_ADDRESS)" ]; then echo "TOKEN_ADDRESS is required"; exit 1; fi
 	@if [ -z "$(MINT_TO)" ]; then echo "MINT_TO is required"; exit 1; fi
 	@if [ -z "$(MINT_AMOUNT)" ]; then echo "MINT_AMOUNT is required"; exit 1; fi
@@ -47,4 +47,17 @@ mint:
 		$(MINT_TO) $(MINT_AMOUNT) \
 		--rpc-url $(SEPOLIA_RPC_URL) \
 		--private-key $(SEPOLIA_PRIVATE_KEY)
+
+# Mint tokens on Anvil.
+mint-anvil:
+	@if [ -z "$(ANVIL_TOKEN_ADDRESS)" ]; then echo "TOKEN_ADDRESS is required"; exit 1; fi
+	@if [ -z "$(ANVIL_MINT_TO)" ]; then echo "MINT_TO is required"; exit 1; fi
+	@if [ -z "$(MINT_AMOUNT)" ]; then echo "MINT_AMOUNT is required"; exit 1; fi
+	@if [ -z "$(ANVIL_RPC_URL)" ]; then echo "ANVIL_RPC_URL is required"; exit 1; fi
+	@if [ -z "$(ANVIL_PRIVATE_KEY)" ]; then echo "ANVIL_PRIVATE_KEY is required"; exit 1; fi
+	cast send $(TOKEN_ADDRESS) \
+		"mint(address,uint256)" \
+		$(MINT_TO) $(MINT_AMOUNT) \
+		--rpc-url $(ANVIL_RPC_URL) \
+		--private-key $(ANVIL_PRIVATE_KEY)
 	
