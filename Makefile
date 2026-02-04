@@ -55,9 +55,9 @@ mint-anvil:
 	@if [ -z "$(MINT_AMOUNT)" ]; then echo "MINT_AMOUNT is required"; exit 1; fi
 	@if [ -z "$(ANVIL_RPC_URL)" ]; then echo "ANVIL_RPC_URL is required"; exit 1; fi
 	@if [ -z "$(ANVIL_PRIVATE_KEY)" ]; then echo "ANVIL_PRIVATE_KEY is required"; exit 1; fi
-	cast send $(TOKEN_ADDRESS) \
+	cast send $(ANVIL_TOKEN_ADDRESS) \
 		"mint(address,uint256)" \
-		$(MINT_TO) $(MINT_AMOUNT) \
+		$(ANVIL_MINT_TO) $(MINT_AMOUNT) \
 		--rpc-url $(ANVIL_RPC_URL) \
 		--private-key $(ANVIL_PRIVATE_KEY)
 	
